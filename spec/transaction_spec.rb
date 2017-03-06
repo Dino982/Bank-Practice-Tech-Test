@@ -8,6 +8,7 @@ describe Transaction do
 
   subject(:credit) {described_class.new(10, @t)}
   subject(:debit) {described_class.new(-10, @t)}
+  amount_error = "Transaction amount cannot be 0"
 
   describe '#initialize' do
     it 'has an amount' do
@@ -16,6 +17,10 @@ describe Transaction do
 
     it 'has timestamp' do
       expect(credit.date).to eq(@t)
+    end
+
+    it 'throws an error if amount is 0' do
+      expect{Transaction.new(0)}.to raise_error(amount_error)
     end
   end
 
