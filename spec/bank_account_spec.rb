@@ -2,6 +2,7 @@ require 'bank_account'
 
 describe BankAccount do
   DEFAULT_BALANCE = BankAccount::DEFAULT_BALANCE
+  balance_error = "Insufficient funds"
   subject(:account) {described_class.new}
 
   describe '#initialize' do
@@ -24,6 +25,11 @@ describe BankAccount do
       account.withdraw(1000)
       expect(account.balance).to eq(1000)
     end
+
+    it 'raises an error if the withdrawal amount exceeds the user\'s current balance' do
+      expect{account.withdraw(2001)}.to raise_error(balance_error)
+    end
+
   end
 
 

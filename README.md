@@ -21,4 +21,8 @@ So that I can spend my hard earned money.
 As a user,
 I would like to see my account's statement,
 So that I can see the balance of my account.
+
+As a bank,
+I would like to stop customers having a negative balance,
+So we always make a profit.
 ```
