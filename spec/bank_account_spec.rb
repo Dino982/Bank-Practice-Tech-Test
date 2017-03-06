@@ -17,5 +17,14 @@ describe BankAccount do
     end
   end
 
-  
+  describe '#withdraw' do
+    before {account.deposit(2000)}
+
+    it 'lowers the account\'s balance' do
+      account.withdraw(1000)
+      expect(account.balance).to eq(1000)
+    end
+  end
+
+
 end
