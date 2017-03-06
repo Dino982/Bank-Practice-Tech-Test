@@ -6,15 +6,26 @@ describe Transaction do
     Timecop.freeze(@t)
   end
 
-  subject(:transaction) {described_class.new(10, @t)}
+  subject(:credit) {described_class.new(10, @t)}
+  subject(:debit) {described_class.new(-10, @t)}
 
   describe '#initialize' do
     it 'has an amount' do
-      expect(transaction.amount).to eq(10)
+      expect(credit.amount).to eq(10)
     end
 
     it 'has timestamp' do
-      expect(transaction.date).to eq(@t)
+      expect(credit.date).to eq(@t)
+    end
+  end
+
+  describe 'type' do
+    it 'should be a credit if amount is greater than 0' do
+      expect(credit.type).to eq(:credit)
+    end
+
+    it 'should be a debit if amount is less than 0' do
+      expect(debit.type).to eq(:debit)
     end
   end
 
