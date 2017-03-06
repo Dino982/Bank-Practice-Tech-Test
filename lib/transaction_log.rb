@@ -1,15 +1,22 @@
 require_relative 'transaction'
 
 class TransactionLog
-  def initialize
+  def initialize(transaction_class = Transaction)
     @transactions = []
+    @transaction_class = transaction_class
   end
 
-  def transaction_history
+  def history
     @transactions.dup
   end
 
-  def add_transaction(transaction)
+  def create(amount, balance)
+    store(@transaction_class.new(amount, balance))
+  end
+  
+  private
+
+  def store(transaction)
     @transactions << transaction
   end
 end

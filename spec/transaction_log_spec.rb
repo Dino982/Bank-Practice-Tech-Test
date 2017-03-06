@@ -2,24 +2,25 @@ require 'transaction_log'
 require 'transaction'
 
 describe TransactionLog do
-  subject(:log) {described_class.new}
   let(:transaction) {double :transaction}
+  let(:transaction_class) {double(:transaction_class, new: transaction)}
+  subject(:log) {described_class.new(transaction_class)}
 
   before do
     allow(transaction).to receive(:amount){10}
   end
 
 
-  describe '#transaction_history' do
+  describe '#transaction' do
     it 'initialises with a empty array of transactions' do
-      expect(log.transaction_history).to be_empty
+      expect(log.history).to be_empty
     end
   end
 
-  describe '#get_transaction' do
+  describe '#create' do
     it 'stores a transaction' do
-      log.add_transaction(transaction)
-      expect(log.transaction_history).to include(transaction)
+      log.create(10, 1000)
+      expect(log.history).to include(transaction)
     end
   end
 
