@@ -15,6 +15,7 @@ class Transaction
 
   def amount_checker(amount)
     raise "Transaction amount cannot be 0" if amount == 0
+    raise "Transaction amount must be a number" unless amount.class == Fixnum || amount.class == Float
     @amount = amount
   end
 end

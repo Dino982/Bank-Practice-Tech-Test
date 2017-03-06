@@ -18,7 +18,7 @@ class BankAccount
   def withdraw(amount)
     raise "Insufficient funds" if amount > @balance
     @balance -= amount
-    @transaction_log.create(amount, balance)
+    @transaction_log.create(-amount, balance)
   end
 
   def current_balance
