@@ -37,6 +37,4 @@ describe BankAccount do
       expect(account.current_balance).to eq("Your balance is £2000")
     end
   end
-
-
 end
