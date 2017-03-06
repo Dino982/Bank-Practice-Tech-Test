@@ -1,7 +1,9 @@
 class TransactionLog
-  attr_reader :transactions
-  
   def initialize
     @transactions = []
+  end
+
+  def get_transactions
+    @transactions.dup
   end
 end
