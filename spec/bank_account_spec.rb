@@ -29,7 +29,13 @@ describe BankAccount do
     it 'raises an error if the withdrawal amount exceeds the user\'s current balance' do
       expect{account.withdraw(2001)}.to raise_error(balance_error)
     end
+  end
 
+  describe '#current_balance' do
+    it 'prints the the user\'s currents balance' do
+      account.deposit(2000)
+      expect(account.current_balance).to eq("Your balance is £2000")
+    end
   end
 
 
