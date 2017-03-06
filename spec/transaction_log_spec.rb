@@ -14,24 +14,24 @@ describe TransactionLog do
 
   describe '#history' do
     it 'initialises with a empty array of transactions' do
-      expect(log.history).to be_empty
+      expect(log.transactions).to be_empty
     end
 
     it 'stores a transactions amount' do
       log.create(10, 1000)
-      expect(log.history[0].amount).to eq(10)
+      expect(log.transactions.keys[0].amount).to eq(10)
     end
 
     it 'stores the current balance' do
       log.create(10, 1000)
-      expect(log.history[0].balance).to eq(1000)
+      expect(log.transactions.values[0]).to eq(1000)
     end
   end
 
   describe '#create' do
     it 'creates a transaction' do
       log.create(10, 1000)
-      expect(log.history).to include(transaction)
+      expect(log.transactions).to include(transaction)
     end
   end
 end
