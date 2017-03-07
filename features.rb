@@ -1,6 +1,9 @@
 require './lib/bank_account.rb'
-bank = BankAccount.new
+require './lib/statement_printer.rb'
+transaction_log = TransactionLog.new
+bank = BankAccount.new(transaction_log)
 bank.deposit(2000)
 bank.withdraw(1000)
 bank.current_balance
-bank.print_statement
+statement = StatementPrinter.new
+statement.print_statement(transaction_log)

@@ -32,18 +32,25 @@ Interaction with IRB:
 $ irb
 2.3.0 :001 > require './lib/bank_account.rb'
  => true
-2.3.0 :002 > bank = BankAccount.new
- => #<BankAccount:0x007fd9ad8355e8 @balance=0, @transaction_log=#<TransactionLog:0x007fd9ad8355c0 @transactions={}, @transaction_class=Transaction>, @statement_printer=#<StatementPrinter:0x007fd9ad835570>>
-2.3.0 :003 > bank.deposit(2000)
+2.3.0 :002 > require './lib/statement_printer.rb'
+ => true
+2.3.0 :003 > transaction_log = TransactionLog.new
+ => #<TransactionLog:0x007ff1b2826828 @transactions={}, @transaction_class=Transaction>
+2.3.0 :004 > bank = BankAccount.new(transaction_log)
+ => #<BankAccount:0x007ff1b2b53cf8 @balance=0, @transaction_log=#<TransactionLog:0x007ff1b2826828 @transactions={}, @transaction_class=Transaction>>
+2.3.0 :005 > bank.deposit(2000)
  => 2000
-2.3.0 :004 > bank.withdraw(1000)
+2.3.0 :006 > bank.withdraw(1000)
  => 1000
-2.3.0 :005 > bank.current_balance
+2.3.0 :007 > bank.current_balance
  => "Your balance is £1000"
-2.3.0 :006 > bank.print_statement
+2.3.0 :008 > statement = StatementPrinter.new
+ => #<StatementPrinter:0x007ff1b2b33700>
+2.3.0 :009 > statement.print_statement(transaction_log)
 date       || credit   || debit    || balance
 07/03/2017 || 2000.00  ||          || 2000.00
 07/03/2017 ||          || 1000.00  || 1000.00
+
 ```
 
 User Stories
