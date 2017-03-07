@@ -12,24 +12,9 @@ class TransactionLog
     store(@transaction_class.new(amount), balance)
   end
 
-  def print_history
-
-  end
-
-
-  # private
+  private
 
   def store(transaction, balance)
     @transactions[transaction] = balance
   end
-
-  def header
-    "date || credit || debit || balance\n"
-  end
-
-  def statement_content
-    trial = @transactions.sort_by {|transaction| transaction.date}.reverse
-    p trial
-  end
-
 end
