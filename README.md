@@ -1,4 +1,5 @@
 # Bank Practice Tech Test in Ruby
+[![Coverage Status](https://coveralls.io/repos/github/mbgimot/Bank-Practice-Tech-Test/badge.svg?branch=master)](https://coveralls.io/github/mbgimot/Bank-Practice-Tech-Test?branch=master)
 
 Requirements
 -----
