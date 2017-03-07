@@ -1,7 +1,6 @@
-require './lib/transaction_log.rb'
-require './lib/statement_printer.rb'
-t = TransactionLog.new
-t.create(1000,1000)
-t.create(-200,800)
-s = StatementPrinter.new
-s.print_statement(t)
+require './lib/bank_account.rb'
+bank = BankAccount.new
+bank.deposit(2000)
+bank.withdraw(1000)
+bank.current_balance
+bank.print_statement
